@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { DataService } from '../shared/data.service';
+import { LiteratureService } from '../shared/literature.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Literature } from '../shared/models';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -17,11 +18,14 @@ export class AppComponent implements AfterViewInit {
   @ViewChild(MatSort) sort?: MatSort;
 
   displayedColumns = ['title', 'isbn', 'authors', 'publishedAt'];
-  constructor(dataService: DataService) {
-    dataService.fetchLiteratures().subscribe((data) => {
-      console.log(data);
-      this.dataSource.data = data;
-    });
+
+  constructor(dataService: LiteratureService) {
+    dataService
+      .fetchLiteratures()
+      .pipe(take(1))
+      .subscribe((data) => {
+        this.dataSource.data = data;
+      });
   }
 
   ngAfterViewInit() {
@@ -33,7 +37,6 @@ export class AppComponent implements AfterViewInit {
     }
 
     this.dataSource.filterPredicate = (data: Literature, filter: string) => {
-      console.debug(data);
       return (
         data.isbn.toLowerCase().includes(filter.toLowerCase()) ||
         data.authors

@@ -7,7 +7,7 @@ import { Author, Book, Literature, Magazine } from './models';
 @Injectable({
   providedIn: 'root',
 })
-export class DataService {
+export class LiteratureService {
   private hydrateAuthors = map<any, any>(
     ([literature, authors]: [{ authors: string }[], Author[]]) => {
       return literature.map((literature) => {
