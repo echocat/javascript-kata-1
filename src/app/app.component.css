@@ -3,3 +3,7 @@
   display: block;
   margin: 1rem;
 }
+
+.mat-column-isbn {
+  min-width: 160px;
+}
