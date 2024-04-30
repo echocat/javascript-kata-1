@@ -28,7 +28,7 @@
   "homepage": "https://github.com/echocat/javascript-kata-1#readme",
   "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.24.5",
