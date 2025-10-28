@@ -8,8 +8,8 @@ on:
       - '*'
 
 jobs:
-  ci:
-    name: Continues Integration
+  test:
+    name: Tests
     runs-on: ubuntu-latest
 
     steps:
