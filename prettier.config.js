@@ -7,6 +7,7 @@ const config = {
   semi: true,
   singleQuote: true,
   printWidth: 80,
+  endOfLine: 'lf',
 };
 
 export default config;
